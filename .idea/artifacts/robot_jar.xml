@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="robot:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/robot_jar</output-path>
+    <root id="archive" name="robot.jar">
+      <element id="module-output" name="robot" />
+    </root>
+  </artifact>
+</component>

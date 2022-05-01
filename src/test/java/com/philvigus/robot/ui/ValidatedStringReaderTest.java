@@ -23,8 +23,7 @@ class ValidatedStringReaderTest {
     // Couldn't get this test working due to time constraint
     when(ui.getInput("prompt")).thenReturn("test");
 
-    ValidatedStringReader reader = new ValidatedStringReader(ui, "prompt", "test", "error");
-    String input = reader.readInput();
+    final ValidatedStringReader reader = new ValidatedStringReader(ui, "prompt", "test", "error");
     assertEquals("test", reader.readInput());
   }
 }

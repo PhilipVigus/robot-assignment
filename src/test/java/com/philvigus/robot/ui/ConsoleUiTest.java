@@ -11,28 +11,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ConsoleUiTest {
   @Test
   void displaysMessage() {
-    ByteArrayInputStream inputStream = new ByteArrayInputStream("".getBytes());
+    final ByteArrayInputStream inputStream = new ByteArrayInputStream("".getBytes());
 
-    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-    PrintStream outputStream = new PrintStream(byteArrayOutputStream);
+    final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    final PrintStream outputStream = new PrintStream(byteArrayOutputStream);
 
-    ConsoleUi consoleUi = new ConsoleUi(inputStream, outputStream);
+    final ConsoleUi consoleUi = new ConsoleUi(inputStream, outputStream);
     consoleUi.displayMessage("Test");
 
-    String outputText = byteArrayOutputStream.toString();
+    final String outputText = byteArrayOutputStream.toString();
 
     assertEquals("Test\n", outputText);
   }
 
   @Test
   void getsInput() {
-    ByteArrayInputStream inputStream = new ByteArrayInputStream("Response\n".getBytes());
-    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    final ByteArrayInputStream inputStream = new ByteArrayInputStream("Response\n".getBytes());
+    final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-    PrintStream outputStream = new PrintStream(byteArrayOutputStream);
+    final PrintStream outputStream = new PrintStream(byteArrayOutputStream);
 
-    ConsoleUi consoleUiImpl = new ConsoleUi(inputStream, outputStream);
-    String response = consoleUiImpl.getInput("Prompt");
+    final ConsoleUi consoleUiImpl = new ConsoleUi(inputStream, outputStream);
+    final String response = consoleUiImpl.getInput("Prompt");
 
     assertEquals("Response", response);
   }

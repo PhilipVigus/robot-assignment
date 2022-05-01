@@ -47,11 +47,11 @@ public class Parser {
    * @param roomSize the room size
    * @return the room
    */
-  public Room parseRoom(String roomSize) {
-    String[] data = roomSize.split(" ");
+  public Room parseRoom(final String roomSize) {
+    final String[] data = roomSize.split(" ");
 
-    int x = Integer.parseInt(data[0]);
-    int y = Integer.parseInt(data[1]);
+    final int x = Integer.parseInt(data[0]);
+    final int y = Integer.parseInt(data[1]);
 
     return new RoomImpl(x, y);
   }

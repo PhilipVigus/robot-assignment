@@ -6,11 +6,11 @@ import com.philvigus.robot.ui.ConsoleUi;
 import com.philvigus.robot.ui.Ui;
 
 public class Main {
-  public static void main(String[] args) {
-    Ui ui = new ConsoleUi(System.in, System.out);
-    Parser parser = new Parser();
+  public static void main(final String[] args) {
+    final Ui ui = new ConsoleUi(System.in, System.out);
+    final Parser parser = new Parser();
 
-    Controller controller = new Controller(ui, parser);
+    final Controller controller = new Controller(ui, parser);
     controller.start();
   }
 }

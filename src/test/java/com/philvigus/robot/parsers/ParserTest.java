@@ -12,16 +12,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ParserTest {
   @Test
   void parseDirectionShouldReturnTheDirection() {
-    Parser parser = new Parser();
+    final Parser parser = new Parser();
 
     assertEquals(Direction.E, parser.parseDirection("1 1 E"));
   }
 
   @Test
   void parsePositionShouldReturnThePosition() {
-    Parser parser = new Parser();
+    final Parser parser = new Parser();
 
-    Map<String, Integer> position = parser.parsePosition("1 2 E");
+    final Map<String, Integer> position = parser.parsePosition("1 2 E");
 
     assertEquals(1, position.get("x"));
     assertEquals(2, position.get("y"));
@@ -29,8 +29,8 @@ class ParserTest {
 
   @Test
   void parseReturnsARoom() {
-    Parser parser = new Parser();
-    Room room = parser.parseRoom("1 1");
+    final Parser parser = new Parser();
+    final Room room = parser.parseRoom("1 1");
 
     // TODO: Don't like the way I'm testing this. Would probably be better with getters
     assertTrue(room.isValidField(1, 1));

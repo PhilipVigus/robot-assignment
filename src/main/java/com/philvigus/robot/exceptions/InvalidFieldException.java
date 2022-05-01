@@ -1,7 +1,13 @@
 package com.philvigus.robot.exceptions;
 
+/** The Invalid field exception class. */
 public class InvalidFieldException extends RuntimeException {
-  public InvalidFieldException(String message) {
+  /**
+   * Instantiates a new Invalid field exception.
+   *
+   * @param message the message
+   */
+  public InvalidFieldException(final String message) {
     super(message);
   }
 }

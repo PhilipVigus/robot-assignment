@@ -4,28 +4,50 @@ import com.philvigus.robot.exceptions.InvalidFieldException;
 import com.philvigus.robot.world.Direction;
 import com.philvigus.robot.world.Room;
 
+/**
+ * The Robot class.
+ */
 public class Robot {
   private Room room;
   private Direction direction;
   private int x;
   private int y;
 
-  public Robot(Direction direction, int x, int y, Room room) {
+  /**
+   * Instantiates a new Robot.
+   *
+   * @param direction the initial
+   * @param x the initial x position
+   * @param y the initial y position
+   * @param room the room the robot is in
+   */
+public Robot(final Direction direction, final int x, final int y, final Room room) {
     this.direction = direction;
     this.x = x;
     this.y = y;
     this.room = room;
   }
 
-  public void turnLeft() {
+  /**
+   * Turn left.
+   */
+public void turnLeft() {
     direction = direction.turnLeft();
   }
 
-  public void turnRight() {
+  /**
+   * Turn right.
+   */
+public void turnRight() {
     direction = direction.turnRight();
   }
 
-  public void moveForward() throws InvalidFieldException {
+  /**
+   * Move forward.
+   *
+   * @throws InvalidFieldException the invalid field exception
+   */
+public void moveForward() throws InvalidFieldException {
     switch(direction) {
       case N -> moveNorth();
       case E -> moveEast();
@@ -34,7 +56,12 @@ public class Robot {
     }
   }
 
-  public String getReport() {
+  /**
+   * Gets a status report.
+   *
+   * @return the report
+   */
+public String getReport() {
     return String.format("Report: %s %s %s", x, y, direction);
   }
 
@@ -70,19 +97,39 @@ public class Robot {
     x--;
   }
 
-  public void setRoom(Room room) {
+  /**
+   * Sets room.
+   *
+   * @param room the room
+   */
+public void setRoom(final Room room) {
     this.room = room;
   }
 
-  public void setDirection(Direction direction) {
+  /**
+   * Sets direction.
+   *
+   * @param direction the direction
+   */
+public void setDirection(final Direction direction) {
     this.direction = direction;
   }
 
-  public void setX(int x) {
+  /**
+   * Sets x.
+   *
+   * @param x the x
+   */
+public void setX(final int x) {
     this.x = x;
   }
 
-  public void setY(int y) {
+  /**
+   * Sets y.
+   *
+   * @param y the y
+   */
+public void setY(final int y) {
     this.y = y;
   }
 }

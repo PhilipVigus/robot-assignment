@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class RobotTest {
   @Test
   void turnLeftShouldTurnTheRobotLeft() {
-    Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
 
     robot.turnLeft();
 
@@ -20,7 +20,7 @@ class RobotTest {
 
   @Test
   void turnRightShouldTurnTheRobotRight() {
-    Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
 
     robot.turnRight();
 
@@ -29,7 +29,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingNorthShouldMoveTheRobotNorth() {
-    Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
 
     robot.moveForward();
 
@@ -38,7 +38,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingEastShouldMoveTheRobotEast() {
-    Robot robot = new Robot(Direction.E, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot(Direction.E, 1, 1, new RoomImpl(10, 10));
 
     robot.moveForward();
 
@@ -47,7 +47,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingSouthShouldMoveTheRobotSouth() {
-    Robot robot = new Robot(Direction.S, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot(Direction.S, 1, 1, new RoomImpl(10, 10));
 
     robot.moveForward();
 
@@ -56,7 +56,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingWestShouldMoveTheRobotWest() {
-    Robot robot = new Robot(Direction.W, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot(Direction.W, 1, 1, new RoomImpl(10, 10));
 
     robot.moveForward();
 
@@ -65,43 +65,47 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingNorthToAnInvalidFieldShouldThrowAnException() {
-    Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(1, 1));
+    final Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(1, 1));
 
-    InvalidFieldException exception = assertThrows(InvalidFieldException.class, robot::moveForward);
+    final InvalidFieldException exception =
+        assertThrows(InvalidFieldException.class, robot::moveForward);
 
     assertEquals("Unable to move North", exception.getMessage());
   }
 
   @Test
   void moveForwardWhenFacingEastToAnInvalidFieldShouldThrowAnException() {
-    Robot robot = new Robot(Direction.E, 1, 1, new RoomImpl(1, 1));
+    final Robot robot = new Robot(Direction.E, 1, 1, new RoomImpl(1, 1));
 
-    InvalidFieldException exception = assertThrows(InvalidFieldException.class, robot::moveForward);
+    final InvalidFieldException exception =
+        assertThrows(InvalidFieldException.class, robot::moveForward);
 
     assertEquals("Unable to move East", exception.getMessage());
   }
 
   @Test
   void moveForwardWhenFacingWestToAnInvalidFieldShouldThrowAnException() {
-    Robot robot = new Robot(Direction.W, 0, 0, new RoomImpl(1, 1));
+    final Robot robot = new Robot(Direction.W, 0, 0, new RoomImpl(1, 1));
 
-    InvalidFieldException exception = assertThrows(InvalidFieldException.class, robot::moveForward);
+    final InvalidFieldException exception =
+        assertThrows(InvalidFieldException.class, robot::moveForward);
 
     assertEquals("Unable to move West", exception.getMessage());
   }
 
   @Test
   void moveForwardWhenFacingSouthToAnInvalidFieldShouldThrowAnException() {
-    Robot robot = new Robot(Direction.S, 0, 0, new RoomImpl(1, 1));
+    final Robot robot = new Robot(Direction.S, 0, 0, new RoomImpl(1, 1));
 
-    InvalidFieldException exception = assertThrows(InvalidFieldException.class, robot::moveForward);
+    final InvalidFieldException exception =
+        assertThrows(InvalidFieldException.class, robot::moveForward);
 
     assertEquals("Unable to move South", exception.getMessage());
   }
 
   @Test
   void reportReturnsAStringSummarisingTheRobotStatus() {
-    Robot robot = new Robot(Direction.S, 0, 0, new RoomImpl(1, 1));
+    final Robot robot = new Robot(Direction.S, 0, 0, new RoomImpl(1, 1));
 
     assertEquals("Report: 0 0 S", robot.getReport());
   }

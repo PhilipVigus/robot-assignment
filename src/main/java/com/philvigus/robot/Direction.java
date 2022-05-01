@@ -3,16 +3,22 @@ package com.philvigus.robot;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/** The Direction enum. */
 public enum Direction {
+  /** N direction. */
   N(0),
+  /** E direction. */
   E(1),
+  /** S direction. */
   S(2),
+  /** W direction. */
   W(3);
 
+  // Used to get a Direction from a position
   private static final Map<Integer, Direction> BY_POSITION = new ConcurrentHashMap<>();
 
   static {
-    for (Direction d : values()) {
+    for (final Direction d : values()) {
       BY_POSITION.put(d.position, d);
     }
   }
@@ -23,6 +29,11 @@ public enum Direction {
     this.position = position;
   }
 
+  /**
+   * Turn right.
+   *
+   * @return the new direction after turning right
+   */
   public Direction turnRight() {
     if (this.position == 3) {
       return Direction.N;
@@ -31,6 +42,11 @@ public enum Direction {
     return BY_POSITION.get(this.position + 1);
   }
 
+  /**
+   * Turn left.
+   *
+   * @return the new direction after turning left
+   */
   public Direction turnLeft() {
     if (this.position == 0) {
       return Direction.W;

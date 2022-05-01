@@ -4,10 +4,19 @@ import com.philvigus.robot.world.Room;
 
 import java.util.regex.Matcher;
 
+// TODO: Add tests, rename class
+
+/** The Position and direction reader. */
 public class PositionAndDirectionReader extends ValidatedStringReader {
   private final Room room;
 
-  public PositionAndDirectionReader(Ui ui, Room room) {
+  /**
+   * Instantiates a new Position and direction reader.
+   *
+   * @param ui the ui
+   * @param room the room
+   */
+  public PositionAndDirectionReader(final Ui ui, final Room room) {
     super(
         ui,
         "Please enter the position and direction",

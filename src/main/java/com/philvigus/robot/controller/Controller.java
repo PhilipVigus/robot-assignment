@@ -48,7 +48,7 @@ public void start() {
         new PositionAndDirectionReader(ui, room);
     final String positionAndDirection = positionAndDirectionReader.readInput();
 
-    final Map<String, Integer> position = parser.parsePosition(positionAndDirection);
+    final Map<String, Integer> position = parser.parsePosition(positionAndDirection, room);
     final Direction direction = parser.parseDirection(positionAndDirection);
 
     this.robot = new Robot(direction, position.get("x"), position.get("y"), room);

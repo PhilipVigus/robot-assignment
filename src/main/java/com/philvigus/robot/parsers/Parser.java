@@ -27,13 +27,13 @@ public class Parser {
    * @return the position map
    */
   // TODO: This is horrible - should add a position class
-  public Map<String, Integer> parsePosition(final String positionAndDirection) {
+  public Map<String, Integer> parsePosition(final String positionAndDirection, final Room room) {
     final Map<String, Integer> position = new ConcurrentHashMap<>();
 
     final String[] data = positionAndDirection.split(" ");
 
     final int x = Integer.parseInt(data[0]);
-    final int y = Integer.parseInt(data[1]);
+    final int y = room.getLength() - Integer.parseInt(data[1]) - 1;
 
     position.put("x", x);
     position.put("y", y);

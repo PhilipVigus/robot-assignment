@@ -10,4 +10,6 @@ public interface Room {
    * @return whether the field is valid
    */
   boolean isValidField(int x, int y);
+
+  int getLength();
 }

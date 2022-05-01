@@ -19,4 +19,8 @@ public class RoomImpl implements Room {
   public boolean isValidField(final int x, final int y) {
     return x >= 0 && x <= width && y >= 0 && y <= length;
   }
+
+  public int getLength() {
+    return length;
+  }
 }

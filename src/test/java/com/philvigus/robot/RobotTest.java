@@ -15,7 +15,7 @@ class RobotTest {
 
     robot.turnLeft();
 
-    assertEquals("Report: 1 1 W", robot.getReport());
+    assertEquals("Report: 1 8 W", robot.getReport());
   }
 
   @Test
@@ -24,7 +24,7 @@ class RobotTest {
 
     robot.turnRight();
 
-    assertEquals("Report: 1 1 E", robot.getReport());
+    assertEquals("Report: 1 8 E", robot.getReport());
   }
 
   @Test
@@ -33,7 +33,7 @@ class RobotTest {
 
     robot.moveForward();
 
-    assertEquals("Report: 1 2 N", robot.getReport());
+    assertEquals("Report: 1 7 N", robot.getReport());
   }
 
   @Test
@@ -42,7 +42,7 @@ class RobotTest {
 
     robot.moveForward();
 
-    assertEquals("Report: 2 1 E", robot.getReport());
+    assertEquals("Report: 2 8 E", robot.getReport());
   }
 
   @Test
@@ -51,7 +51,7 @@ class RobotTest {
 
     robot.moveForward();
 
-    assertEquals("Report: 1 0 S", robot.getReport());
+    assertEquals("Report: 1 9 S", robot.getReport());
   }
 
   @Test
@@ -60,7 +60,7 @@ class RobotTest {
 
     robot.moveForward();
 
-    assertEquals("Report: 0 1 W", robot.getReport());
+    assertEquals("Report: 0 8 W", robot.getReport());
   }
 
   @Test

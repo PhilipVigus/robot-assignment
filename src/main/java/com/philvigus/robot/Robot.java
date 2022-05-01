@@ -61,8 +61,9 @@ public void moveForward() throws InvalidFieldException {
    *
    * @return the report
    */
-public String getReport() {
-    return String.format("Report: %s %s %s", x, y, direction);
+  public String getReport() {
+    int userY = room.getLength() - y - 1;
+    return String.format("Report: %s %s %s", x, userY, direction);
   }
 
   private void moveNorth() throws InvalidFieldException {

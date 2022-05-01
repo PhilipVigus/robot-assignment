@@ -2,6 +2,7 @@ package com.philvigus.robot.parsers;
 
 import com.philvigus.robot.world.Direction;
 import com.philvigus.robot.world.Room;
+import com.philvigus.robot.world.RoomImpl;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -20,11 +21,12 @@ class ParserTest {
   @Test
   void parsePositionShouldReturnThePosition() {
     final Parser parser = new Parser();
+    final Room room = new RoomImpl(10, 10);
 
-    final Map<String, Integer> position = parser.parsePosition("1 2 E");
+    final Map<String, Integer> position = parser.parsePosition("1 2 E", room);
 
     assertEquals(1, position.get("x"));
-    assertEquals(2, position.get("y"));
+    assertEquals(7, position.get("y"));
   }
 
   @Test

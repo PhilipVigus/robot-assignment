@@ -3,7 +3,7 @@ package com.philvigus.robot.ui;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/** The Validated string reader class. */
+/** The validated string reader class. */
 public class ValidatedStringReader {
   /** The UI used by the reader. */
   protected final Ui ui;
@@ -21,9 +21,9 @@ public class ValidatedStringReader {
    * Instantiates a new Validated string reader.
    *
    * @param ui the ui
-   * @param prompt the prompt
-   * @param regex the regex
-   * @param error the error
+   * @param prompt the prompt seen before input is requested
+   * @param regex the regex to match the input against
+   * @param error the error seen if the input does not match
    */
   public ValidatedStringReader(
       final Ui ui, final String prompt, final String regex, final String error) {

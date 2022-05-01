@@ -9,6 +9,10 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+/**
+ * TODO:
+ * Make this test work. Mocking ConsoleUi throws an error, and I was unable to fix it within the time I was given.
+ * */
 class ValidatedStringReaderTest {
   @Mock ConsoleUi ui;
 
@@ -20,7 +24,6 @@ class ValidatedStringReaderTest {
   @Test
   @Disabled
   void readInputReturnsAValidString() {
-    // Couldn't get this test working due to time constraint
     when(ui.getInput("prompt")).thenReturn("test");
 
     final ValidatedStringReader reader = new ValidatedStringReader(ui, "prompt", "test", "error");

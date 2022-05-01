@@ -4,9 +4,13 @@ import com.philvigus.robot.world.Room;
 
 import java.util.regex.Matcher;
 
-// TODO: Add tests, rename class
-
-/** The Position and direction reader. */
+/** The Position and direction reader
+ *
+ * TODO:
+ * - Add tests
+ * - Move display strings to a resource bundle
+ * - Think of a better class name to remove the 'and'
+ */
 public class PositionAndDirectionReader extends ValidatedStringReader {
   private final Room room;
 
@@ -26,6 +30,10 @@ public class PositionAndDirectionReader extends ValidatedStringReader {
     this.room = room;
   }
 
+  /**
+   * TODO:
+   * This is another function that would benefit from adding a Position class
+   */
   @Override
   public String readInput() {
     final String input = ui.getInput(prompt);

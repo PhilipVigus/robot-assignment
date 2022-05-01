@@ -4,7 +4,12 @@ import java.util.regex.Matcher;
 
 // TODO: Needs tests
 
-/** The Room size reader class. */
+/** The Room size reader
+ *
+ * TODO:
+ * - Add tests
+ * - Move display strings to a resource bundle
+ */
 public class RoomSizeReader extends ValidatedStringReader {
   /**
    * Instantiates a new Room size reader.
@@ -16,7 +21,7 @@ public class RoomSizeReader extends ValidatedStringReader {
         ui,
         "Please enter the room size",
         "^\\d+ \\d+$",
-        "Room must be specified as a positive number then a space then a positive number");
+        "Room must be specified as a number then a space then a number, with both numbers greater than zero");
   }
 
   @Override

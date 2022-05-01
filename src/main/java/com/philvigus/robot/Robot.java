@@ -6,6 +6,12 @@ import com.philvigus.robot.world.Room;
 
 /**
  * The Robot class.
+ *
+ * TODO:
+ * - Add a no-args constructor the controller can use
+ * - Extract a Robot interface and make this class implement it
+ * - Simplify initialisation by providing an Initialise function that sets all of the robot attributes at once
+ * - Use the Position class I would add to record the robot's position
  */
 public class Robot {
   private Room room;
@@ -21,7 +27,7 @@ public class Robot {
    * @param y the initial y position
    * @param room the room the robot is in
    */
-public Robot(final Direction direction, final int x, final int y, final Room room) {
+  public Robot(final Direction direction, final int x, final int y, final Room room) {
     this.direction = direction;
     this.x = x;
     this.y = y;
@@ -31,14 +37,14 @@ public Robot(final Direction direction, final int x, final int y, final Room roo
   /**
    * Turn left.
    */
-public void turnLeft() {
+  public void turnLeft() {
     direction = direction.turnLeft();
   }
 
   /**
    * Turn right.
    */
-public void turnRight() {
+ public void turnRight() {
     direction = direction.turnRight();
   }
 
@@ -47,7 +53,7 @@ public void turnRight() {
    *
    * @throws InvalidFieldException the invalid field exception
    */
-public void moveForward() throws InvalidFieldException {
+  public void moveForward() throws InvalidFieldException {
     switch(direction) {
       case N -> moveNorth();
       case E -> moveEast();
@@ -97,6 +103,11 @@ public void moveForward() throws InvalidFieldException {
 
     x--;
   }
+
+  /**
+   * TODO:
+   * All of these setters should be replaced with a single initialise method
+   */
 
   /**
    * Sets room.

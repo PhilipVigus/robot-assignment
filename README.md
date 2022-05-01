@@ -1,40 +1,17 @@
 # Robot Assignment
 
-## Task
+## General issues/areas for improvement
 
-Your task is to program the controller to a robot. It’s a simple robot that can
-walk around in a room where the floor is represented as a number of fields in a
-wire mesh. Input is first two numbers, which tells the robot how big the room is:
-* 5 7
+In addition to the comments I've written against the code itself, this is a summary of the main points:
 
-Which means that the room is 5 fields wide and is 7 fields deep.
-
-The size of the room follows two digits and one letter indicating the starting
-position of the robot and its orientation in space. For example:
-* 3 3 N
-
-Which means that the robot is in field (3, 3) and faces north. Subsequently, the
-robot receives a number of navigation commands in the form of characters. The
-following commands shall be implemented:
-* L Turn left
-* R Turn right
-* F Walk forward
-
-Example:
-* FFRFRFRFF
-
-After the last command is received, the robot must report which field it is in
-and what direction it is facing.
-
-Example:
-
-* 5 5
-* 1 2 N
-* RFRFFRFRF
-* Report: 1 3 N
-
-
-* 5 5
-* 0 0 E
-* RFLFFLRF
-* Report: 3 1 E
+* Change use of 'Moves' to 'Commands' to match language used in task spec. This would involve renaming classes and
+  instance variables as appropriate
+* Rework the Controller class (see comments in the class itself for details)
+* Introduce a Position class to encapsulate positions in the room. This would clean a lot of code up and remove a fair
+  amount of code duplication
+* Introduce interfaces for the Parser and Robot to implement. At the moment, consumers of these classes are using
+  concrete instances, which is not great. By using interfaces instead it would be possible to easily swap out different
+  implementations
+* Encapsulate input and output streams so that they can be more easily mocked. This should allow me to solve the issue
+  with testing the different Reader classes. When I tried to mock the ConsoleUi class, it errored. I spent some time
+  trying to work out why but eventually moved on.

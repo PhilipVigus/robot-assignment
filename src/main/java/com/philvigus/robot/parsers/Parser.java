@@ -7,17 +7,20 @@ import com.philvigus.robot.world.RoomImpl;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * TODO: Introduce a Parser interface that this implements
+ */
 public class Parser {
   /**
    * Returns the direction from the string.
    *
    * @param positionAndDirection the position and direction string
-   * @return the direction
+   * @return the parsed direction
    */
   public Direction parseDirection(final String positionAndDirection) {
-    final String[] data = positionAndDirection.split(" ");
+    final String[] fields = positionAndDirection.split(" ");
 
-    return Direction.valueOf(data[2]);
+    return Direction.valueOf(fields[2]);
   }
 
   /**
@@ -25,15 +28,19 @@ public class Parser {
    *
    * @param positionAndDirection the position and direction string
    * @return the position map
+   *
+   * TODO:
+   * Introducing a Position class would make the most difference here, massively simplify
+   * this. Using a Map here makes it much harder to following what is actually a relative simple
+   * function
    */
-  // TODO: This is horrible - should add a position class
   public Map<String, Integer> parsePosition(final String positionAndDirection, final Room room) {
     final Map<String, Integer> position = new ConcurrentHashMap<>();
 
-    final String[] data = positionAndDirection.split(" ");
+    final String[] fields = positionAndDirection.split(" ");
 
-    final int x = Integer.parseInt(data[0]);
-    final int y = room.getLength() - Integer.parseInt(data[1]) - 1;
+    final int x = Integer.parseInt(fields[0]);
+    final int y = room.getLength() - Integer.parseInt(fields[1]) - 1;
 
     position.put("x", x);
     position.put("y", y);

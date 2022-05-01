@@ -80,7 +80,7 @@ public void start() {
    * sequence of moves and return those as a list. All this class would need to
    * do then would be to execute the moves.
    *
-   * I'd like to make it so the program doesn't automatically finish after
+   * I'd also like to make it so the program doesn't automatically finish after
    * one set of movements. I'd have to have an elegant way of allowing the
    * user to exit with a command though, which would significantly change
    * the way the parsers are written.

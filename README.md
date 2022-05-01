@@ -15,3 +15,8 @@ In addition to the comments I've written against the code itself, this is a summ
 * Encapsulate input and output streams so that they can be more easily mocked. This should allow me to solve the issue
   with testing the different Reader classes. When I tried to mock the ConsoleUi class, it errored. I spent some time
   trying to work out why but eventually moved on.
+* I noticed while running manual tests that there was an issue with the coordinate system I had used. I had incorrectly
+  assumed that the origin was in the bottom left, whereas the task specs imply the top left. The fix I put in place for
+  this works, but unfortunately has made some tests that use coordinates in their asserts look really strange. Introduce
+  a position class will help fix this, as I can convert between the internal and task-required coordinate systems within
+  it

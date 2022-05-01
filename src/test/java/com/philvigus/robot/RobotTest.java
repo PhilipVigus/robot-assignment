@@ -98,4 +98,11 @@ class RobotTest {
 
     assertEquals("Unable to move South", exception.getMessage());
   }
+
+  @Test
+  void reportReturnsAStringSummarisingTheRobotStatus() {
+    Robot robot = new Robot(Direction.S, 0, 0, new RoomImpl(1, 1));
+
+    assertEquals("Report: 0 0 S", robot.getReport());
+  }
 }

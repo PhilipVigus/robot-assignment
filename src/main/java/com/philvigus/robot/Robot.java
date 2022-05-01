@@ -46,6 +46,10 @@ public class Robot {
     }
   }
 
+  public String getReport() {
+    return String.format("Report: %s %s %s", x, y, direction);
+  }
+
   private void moveNorth() throws InvalidFieldException {
     if (!room.isValidField(x, y + 1)) {
       throw new InvalidFieldException("Unable to move North");

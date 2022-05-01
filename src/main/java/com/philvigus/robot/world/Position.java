@@ -13,8 +13,8 @@ public class Position {
     return new Position(x, room.getLength() - y - 1);
   }
 
-  public Position convertToUserCoordinates(Room room) {
-    return new Position(x, room.getLength() - y - 1);
+  public static Position convertToUserCoordinates(Position position, Room room) {
+    return new Position(position.getX(), room.getLength() - position.getY() - 1);
   }
 
   public int getX() {

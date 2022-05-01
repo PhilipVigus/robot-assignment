@@ -73,7 +73,7 @@ public class Robot {
    * @return the report
    */
   public String getReport() {
-    return String.format("Report: %s %s", position.convertToUserCoordinates(room).toString(), direction);
+    return String.format("Report: %s %s", Position.convertToUserCoordinates(position, room).toString(), direction);
   }
 
   public void initialise(final Position position, final Direction direction, final Room room) {

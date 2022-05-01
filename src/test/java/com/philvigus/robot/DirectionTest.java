@@ -32,4 +32,32 @@ class DirectionTest {
 
     assertEquals(Direction.N, direction.turnRight());
   }
+
+  @Test
+  void turnLeftFromWestShouldReturnSouth() {
+    Direction direction = Direction.W;
+
+    assertEquals(Direction.S, direction.turnLeft());
+  }
+
+  @Test
+  void turnLeftFromSouthShouldReturnEast() {
+    Direction direction = Direction.S;
+
+    assertEquals(Direction.E, direction.turnLeft());
+  }
+
+  @Test
+  void turnLeftFromEastShouldReturnNorth() {
+    Direction direction = Direction.E;
+
+    assertEquals(Direction.N, direction.turnLeft());
+  }
+
+  @Test
+  void turnLeftFromNorthShouldReturnWest() {
+    Direction direction = Direction.N;
+
+    assertEquals(Direction.W, direction.turnLeft());
+  }
 }

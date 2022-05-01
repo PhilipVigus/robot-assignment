@@ -30,4 +30,12 @@ public enum Direction {
 
     return BY_POSITION.get(this.position + 1);
   }
+
+  public Direction turnLeft() {
+    if (this.position == 0) {
+      return Direction.W;
+    }
+
+    return BY_POSITION.get(this.position - 1);
+  }
 }

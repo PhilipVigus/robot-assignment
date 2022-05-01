@@ -1,7 +1,8 @@
 package com.philvigus.robot;
 
 import com.philvigus.robot.exceptions.InvalidFieldException;
-import com.philvigus.robot.room.RoomImpl;
+import com.philvigus.robot.world.Direction;
+import com.philvigus.robot.world.RoomImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,4 +1,4 @@
-package com.philvigus.robot.room;
+package com.philvigus.robot.world;
 
 import org.junit.jupiter.api.Test;
 

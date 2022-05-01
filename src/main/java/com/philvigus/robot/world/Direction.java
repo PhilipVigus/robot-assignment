@@ -1,4 +1,4 @@
-package com.philvigus.robot;
+package com.philvigus.robot.world;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

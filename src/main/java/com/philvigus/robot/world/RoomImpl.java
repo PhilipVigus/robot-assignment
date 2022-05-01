@@ -1,4 +1,4 @@
-package com.philvigus.robot.room;
+package com.philvigus.robot.world;
 
 /** The Room class. */
 public class RoomImpl implements Room {

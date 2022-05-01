@@ -1,7 +1,8 @@
 package com.philvigus.robot;
 
 import com.philvigus.robot.exceptions.InvalidFieldException;
-import com.philvigus.robot.room.Room;
+import com.philvigus.robot.world.Direction;
+import com.philvigus.robot.world.Room;
 
 public class Robot {
   private final Room room;

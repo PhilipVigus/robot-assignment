@@ -1,7 +1,7 @@
 package com.philvigus.robot;
 
 import com.philvigus.robot.exceptions.InvalidFieldException;
-import com.philvigus.robot.room.Room;
+import com.philvigus.robot.room.RoomImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class RobotTest {
   @Test
   void turnLeftShouldTurnTheRobotLeft() {
-    Robot robot = new Robot(Direction.N, 1, 1, new Room(10, 10));
+    Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
 
     robot.turnLeft();
 
@@ -19,7 +19,7 @@ class RobotTest {
 
   @Test
   void turnRightShouldTurnTheRobotRight() {
-    Robot robot = new Robot(Direction.N, 1, 1, new Room(10, 10));
+    Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
 
     robot.turnRight();
 
@@ -28,7 +28,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingNorthShouldMoveTheRobotNorth() {
-    Robot robot = new Robot(Direction.N, 1, 1, new Room(10, 10));
+    Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
 
     robot.moveForward();
 
@@ -37,7 +37,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingEastShouldMoveTheRobotEast() {
-    Robot robot = new Robot(Direction.E, 1, 1, new Room(10, 10));
+    Robot robot = new Robot(Direction.E, 1, 1, new RoomImpl(10, 10));
 
     robot.moveForward();
 
@@ -46,7 +46,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingSouthShouldMoveTheRobotSouth() {
-    Robot robot = new Robot(Direction.S, 1, 1, new Room(10, 10));
+    Robot robot = new Robot(Direction.S, 1, 1, new RoomImpl(10, 10));
 
     robot.moveForward();
 
@@ -55,7 +55,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingWestShouldMoveTheRobotWest() {
-    Robot robot = new Robot(Direction.W, 1, 1, new Room(10, 10));
+    Robot robot = new Robot(Direction.W, 1, 1, new RoomImpl(10, 10));
 
     robot.moveForward();
 
@@ -64,7 +64,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingNorthToAnInvalidFieldShouldThrowAnException() {
-    Robot robot = new Robot(Direction.N, 1, 1, new Room(1, 1));
+    Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(1, 1));
 
     InvalidFieldException exception = assertThrows(InvalidFieldException.class, robot::moveForward);
 
@@ -73,7 +73,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingEastToAnInvalidFieldShouldThrowAnException() {
-    Robot robot = new Robot(Direction.E, 1, 1, new Room(1, 1));
+    Robot robot = new Robot(Direction.E, 1, 1, new RoomImpl(1, 1));
 
     InvalidFieldException exception = assertThrows(InvalidFieldException.class, robot::moveForward);
 
@@ -82,7 +82,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingWestToAnInvalidFieldShouldThrowAnException() {
-    Robot robot = new Robot(Direction.W, 0, 0, new Room(1, 1));
+    Robot robot = new Robot(Direction.W, 0, 0, new RoomImpl(1, 1));
 
     InvalidFieldException exception = assertThrows(InvalidFieldException.class, robot::moveForward);
 
@@ -91,7 +91,7 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingSouthToAnInvalidFieldShouldThrowAnException() {
-    Robot robot = new Robot(Direction.S, 0, 0, new Room(1, 1));
+    Robot robot = new Robot(Direction.S, 0, 0, new RoomImpl(1, 1));
 
     InvalidFieldException exception = assertThrows(InvalidFieldException.class, robot::moveForward);
 

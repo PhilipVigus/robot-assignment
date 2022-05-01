@@ -5,7 +5,7 @@ import com.philvigus.robot.world.Direction;
 import com.philvigus.robot.world.Room;
 
 public class Robot {
-  private final Room room;
+  private Room room;
   private Direction direction;
   private int x;
   private int y;
@@ -68,5 +68,21 @@ public class Robot {
     }
 
     x--;
+  }
+
+  public void setRoom(Room room) {
+    this.room = room;
+  }
+
+  public void setDirection(Direction direction) {
+    this.direction = direction;
+  }
+
+  public void setX(int x) {
+    this.x = x;
+  }
+
+  public void setY(int y) {
+    this.y = y;
   }
 }

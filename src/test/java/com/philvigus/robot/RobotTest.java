@@ -31,4 +31,31 @@ class RobotTest {
 
     assertEquals(2, robot.getY());
   }
+
+  @Test
+  void moveForwardWhenFacingEastShouldMoveTheRobotEast() {
+    Robot robot = new Robot(Direction.E, 1, 1);
+
+    robot.moveForward();
+
+    assertEquals(2, robot.getX());
+  }
+
+  @Test
+  void moveForwardWhenFacingSouthShouldMoveTheRobotSouth() {
+    Robot robot = new Robot(Direction.S, 1, 1);
+
+    robot.moveForward();
+
+    assertEquals(0, robot.getY());
+  }
+
+  @Test
+  void moveForwardWhenFacingWestShouldMoveTheRobotWest() {
+    Robot robot = new Robot(Direction.W, 1, 1);
+
+    robot.moveForward();
+
+    assertEquals(0, robot.getX());
+  }
 }

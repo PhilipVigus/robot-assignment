@@ -34,10 +34,25 @@ public class Robot {
   public void moveForward() {
     switch(direction) {
       case N -> moveNorth();
+      case E -> moveEast();
+      case S -> moveSouth();
+      case W -> moveWest();
     }
   }
 
   private void moveNorth() {
-    y = y + 1;
+    y++;
+  }
+
+  private void moveEast() {
+    x++;
+  }
+
+  private void moveSouth() {
+    y--;
+  }
+
+  private void moveWest() {
+    x--;
   }
 }

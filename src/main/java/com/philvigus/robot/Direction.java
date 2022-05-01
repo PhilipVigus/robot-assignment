@@ -24,6 +24,10 @@ public enum Direction {
   }
 
   public Direction turnRight() {
+    if (this.position == 3) {
+      return Direction.N;
+    }
+
     return BY_POSITION.get(this.position + 1);
   }
 }

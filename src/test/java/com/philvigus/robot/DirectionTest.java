@@ -25,4 +25,11 @@ class DirectionTest {
 
     assertEquals(Direction.W, direction.turnRight());
   }
+
+  @Test
+  void turnRightFromWestShouldReturnNorth() {
+    Direction direction = Direction.W;
+
+    assertEquals(Direction.N, direction.turnRight());
+  }
 }

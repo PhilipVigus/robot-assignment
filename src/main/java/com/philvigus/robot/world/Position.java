@@ -9,6 +9,14 @@ public class Position {
     this.y = y;
   }
 
+  public static Position createFromUserCoordinates(int x, int y, Room room) {
+    return new Position(x, room.getLength() - y - 1);
+  }
+
+  public Position convertToUserCoordinates(Room room) {
+    return new Position(x, room.getLength() - y - 1);
+  }
+
   public int getX() {
     return x;
   }
@@ -23,5 +31,10 @@ public class Position {
 
   public void setY(int y) {
     this.y = y;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("%d %d", x, y);
   }
 }

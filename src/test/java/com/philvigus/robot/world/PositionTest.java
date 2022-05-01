@@ -20,4 +20,22 @@ class PositionTest {
 
     assertEquals(5, position.getY());
   }
+
+  @Test
+  void createFromUserCoordinatesShouldReturnAPositionInInternalCoordinates() {
+    final Position position = Position.createFromUserCoordinates(0, 1, new RoomImpl(5, 5));
+
+    assertEquals(0, position.getX());
+    assertEquals(3, position.getY());
+  }
+
+  @Test
+  void convertToUserCoordinatesShouldConvertAPositionFromInternalToWorldCoordinates() {
+    final Position position = new Position(0, 3);
+
+    final Position convertedPosition = position.convertToUserCoordinates(new RoomImpl(5, 5));
+
+    assertEquals(0, convertedPosition.getX());
+    assertEquals(1, convertedPosition.getY());
+  }
 }

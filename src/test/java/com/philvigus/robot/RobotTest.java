@@ -2,6 +2,8 @@ package com.philvigus.robot;
 
 import com.philvigus.robot.exceptions.InvalidFieldException;
 import com.philvigus.robot.world.Direction;
+import com.philvigus.robot.world.Position;
+import com.philvigus.robot.world.Room;
 import com.philvigus.robot.world.RoomImpl;
 import org.junit.jupiter.api.Test;
 
@@ -11,61 +13,83 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class RobotTest {
   @Test
   void turnLeftShouldTurnTheRobotLeft() {
-    final Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot();
 
     robot.turnLeft();
 
-    assertEquals("Report: 1 8 W", robot.getReport());
+    assertEquals("Report: 0 0 W", robot.getReport());
   }
 
   @Test
   void turnRightShouldTurnTheRobotRight() {
-    final Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot();
 
     robot.turnRight();
 
-    assertEquals("Report: 1 8 E", robot.getReport());
+    assertEquals("Report: 0 0 E", robot.getReport());
   }
 
   @Test
   void moveForwardWhenFacingNorthShouldMoveTheRobotNorth() {
-    final Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot();
+    Room room = new RoomImpl(2, 2);
+    Position userCoordPosition = Position.createFromUserCoordinates(0, 1, room);
+
+    robot.initialise(userCoordPosition, Direction.N, room);
 
     robot.moveForward();
 
-    assertEquals("Report: 1 7 N", robot.getReport());
+    // The report gives the position in user coordinates
+    assertEquals("Report: 0 0 N", robot.getReport());
   }
 
   @Test
   void moveForwardWhenFacingEastShouldMoveTheRobotEast() {
-    final Robot robot = new Robot(Direction.E, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot();
+    Room room = new RoomImpl(2, 2);
+    Position userCoordPosition = Position.createFromUserCoordinates(0, 0, room);
+
+    robot.initialise(userCoordPosition, Direction.E, room);
 
     robot.moveForward();
 
-    assertEquals("Report: 2 8 E", robot.getReport());
+    // The report gives the position in user coordinates
+    assertEquals("Report: 1 0 E", robot.getReport());
   }
 
   @Test
   void moveForwardWhenFacingSouthShouldMoveTheRobotSouth() {
-    final Robot robot = new Robot(Direction.S, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot();
+
+    Room room = new RoomImpl(2, 2);
+    Position userCoordPosition = Position.createFromUserCoordinates(0, 0, room);
+
+    robot.initialise(userCoordPosition, Direction.S, room);
 
     robot.moveForward();
 
-    assertEquals("Report: 1 9 S", robot.getReport());
+    // The report gives the position in user coordinates
+    assertEquals("Report: 0 1 S", robot.getReport());
   }
 
   @Test
   void moveForwardWhenFacingWestShouldMoveTheRobotWest() {
-    final Robot robot = new Robot(Direction.W, 1, 1, new RoomImpl(10, 10));
+    final Robot robot = new Robot();
+
+    Room room = new RoomImpl(2, 2);
+    Position userCoordPosition = Position.createFromUserCoordinates(1, 0, room);
+
+    robot.initialise(userCoordPosition, Direction.W, room);
 
     robot.moveForward();
 
-    assertEquals("Report: 0 8 W", robot.getReport());
+    // The report gives the position in user coordinates
+    assertEquals("Report: 0 0 W", robot.getReport());
   }
 
   @Test
   void moveForwardWhenFacingNorthToAnInvalidFieldShouldThrowAnException() {
-    final Robot robot = new Robot(Direction.N, 1, 1, new RoomImpl(1, 1));
+    final Robot robot = new Robot();
 
     final InvalidFieldException exception =
         assertThrows(InvalidFieldException.class, robot::moveForward);
@@ -75,7 +99,8 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingEastToAnInvalidFieldShouldThrowAnException() {
-    final Robot robot = new Robot(Direction.E, 1, 1, new RoomImpl(1, 1));
+    final Robot robot = new Robot();
+    robot.initialise(new Position(1, 1), Direction.E, new RoomImpl(1, 1));
 
     final InvalidFieldException exception =
         assertThrows(InvalidFieldException.class, robot::moveForward);
@@ -85,7 +110,8 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingWestToAnInvalidFieldShouldThrowAnException() {
-    final Robot robot = new Robot(Direction.W, 0, 0, new RoomImpl(1, 1));
+    final Robot robot = new Robot();
+    robot.initialise(new Position(0, 0), Direction.W, new RoomImpl(1, 1));
 
     final InvalidFieldException exception =
         assertThrows(InvalidFieldException.class, robot::moveForward);
@@ -95,7 +121,8 @@ class RobotTest {
 
   @Test
   void moveForwardWhenFacingSouthToAnInvalidFieldShouldThrowAnException() {
-    final Robot robot = new Robot(Direction.S, 0, 0, new RoomImpl(1, 1));
+    final Robot robot = new Robot();
+    robot.initialise(new Position(0, 0), Direction.S, new RoomImpl(1, 1));
 
     final InvalidFieldException exception =
         assertThrows(InvalidFieldException.class, robot::moveForward);
@@ -105,8 +132,8 @@ class RobotTest {
 
   @Test
   void reportReturnsAStringSummarisingTheRobotStatus() {
-    final Robot robot = new Robot(Direction.S, 0, 0, new RoomImpl(1, 1));
+    final Robot robot = new Robot();
 
-    assertEquals("Report: 0 0 S", robot.getReport());
+    assertEquals("Report: 0 0 N", robot.getReport());
   }
 }

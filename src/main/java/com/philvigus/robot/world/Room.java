@@ -5,11 +5,10 @@ public interface Room {
   /**
    * Whether the specified field location falls within the room.
    *
-   * @param x the x position
-   * @param y the y position
+   * @param position the position to be checked
    * @return whether the field is valid
    */
-  boolean isValidField(int x, int y);
+  boolean isValidField(Position position);
 
   /**
    * Gets the room's length.

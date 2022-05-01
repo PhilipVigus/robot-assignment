@@ -2,7 +2,9 @@ package com.philvigus.robot;
 
 import com.philvigus.robot.exceptions.InvalidFieldException;
 import com.philvigus.robot.world.Direction;
+import com.philvigus.robot.world.Position;
 import com.philvigus.robot.world.Room;
+import com.philvigus.robot.world.RoomImpl;
 
 /**
  * The Robot class.
@@ -16,22 +18,25 @@ import com.philvigus.robot.world.Room;
 public class Robot {
   private Room room;
   private Direction direction;
-  private int x;
-  private int y;
+  private Position position;
 
   /**
    * Instantiates a new Robot.
    *
    * @param direction the initial
-   * @param x the initial x position
-   * @param y the initial y position
    * @param room the room the robot is in
+   * @param position the robot's initial position
    */
-  public Robot(final Direction direction, final int x, final int y, final Room room) {
+  public Robot(final Direction direction, final Room room, final Position position) {
     this.direction = direction;
-    this.x = x;
-    this.y = y;
     this.room = room;
+    this.position = position;
+  }
+
+  public Robot() {
+    this.direction = Direction.N;
+    this.position = new Position(0,0);
+    this.room = new RoomImpl(1, 1);
   }
 
   /**
@@ -68,40 +73,52 @@ public class Robot {
    * @return the report
    */
   public String getReport() {
-    int userY = room.getLength() - y - 1;
-    return String.format("Report: %s %s %s", x, userY, direction);
+    return String.format("Report: %s %s", position.convertToUserCoordinates(room).toString(), direction);
+  }
+
+  public void initialise(final Position position, final Direction direction, final Room room) {
+    this.position = position;
+    this.direction = direction;
+    this.room = room;
   }
 
   private void moveNorth() throws InvalidFieldException {
-    if (!room.isValidField(x, y + 1)) {
+    Position newPosition = new Position(position.getX(), position.getY() + 1);
+    if (!room.isValidField(newPosition)) {
       throw new InvalidFieldException("Unable to move North");
     }
 
-    y++;
+    position = newPosition;
   }
 
   private void moveEast() throws InvalidFieldException {
-    if (!room.isValidField(x + 1, y)) {
+    Position newPosition = new Position(position.getX() + 1, position.getY());
+
+    if (!room.isValidField(newPosition)) {
       throw new InvalidFieldException("Unable to move East");
     }
 
-    x++;
+    position = newPosition;
   }
 
   private void moveSouth() throws InvalidFieldException {
-    if (!room.isValidField(x, y - 1)) {
+    Position newPosition = new Position(position.getX(), position.getY() - 1);
+
+    if (!room.isValidField(newPosition)) {
       throw new InvalidFieldException("Unable to move South");
     }
 
-    y--;
+    position = newPosition;
   }
 
   private void moveWest() throws InvalidFieldException {
-    if (!room.isValidField(x - 1, y)) {
+    Position newPosition = new Position(position.getX() - 1, position.getY());
+
+    if (!room.isValidField(newPosition)) {
       throw new InvalidFieldException("Unable to move West");
     }
 
-    x--;
+    position = newPosition;
   }
 
   /**
@@ -114,7 +131,7 @@ public class Robot {
    *
    * @param room the room
    */
-public void setRoom(final Room room) {
+  public void setRoom(final Room room) {
     this.room = room;
   }
 
@@ -123,25 +140,7 @@ public void setRoom(final Room room) {
    *
    * @param direction the direction
    */
-public void setDirection(final Direction direction) {
+  public void setDirection(final Direction direction) {
     this.direction = direction;
-  }
-
-  /**
-   * Sets x.
-   *
-   * @param x the x
-   */
-public void setX(final int x) {
-    this.x = x;
-  }
-
-  /**
-   * Sets y.
-   *
-   * @param y the y
-   */
-public void setY(final int y) {
-    this.y = y;
   }
 }

@@ -1,20 +1,19 @@
 package com.philvigus;
 
+import com.philvigus.robot.Robot;
 import com.philvigus.robot.controller.Controller;
 import com.philvigus.robot.parsers.Parser;
 import com.philvigus.robot.ui.ConsoleUi;
 import com.philvigus.robot.ui.Ui;
 
-/**
- * TODO:
- * - Use the encapsulated input and output classes I would add
- */
+/** TODO: - Use the encapsulated input and output classes I would add */
 public class Main {
   public static void main(final String[] args) {
     final Ui ui = new ConsoleUi(System.in, System.out);
     final Parser parser = new Parser();
+    final Robot robot = new Robot();
 
-    final Controller controller = new Controller(ui, parser);
+    final Controller controller = new Controller(ui, parser, robot);
     controller.start();
   }
 }

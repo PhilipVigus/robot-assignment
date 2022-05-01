@@ -10,34 +10,34 @@ class RoomImplTest {
   void isValidFieldShouldReturnTrueIfTheFieldIsValid() {
     final RoomImpl room = new RoomImpl(3, 4);
 
-    assertTrue(room.isValidField(1, 1));
+    assertTrue(room.isValidField(new Position(1, 1)));
   }
 
   @Test
   void isValidFieldShouldReturnFalseIfXIsLessThanZero() {
     final RoomImpl room = new RoomImpl(3, 4);
 
-    assertFalse(room.isValidField(-1, 1));
+    assertFalse(room.isValidField(new Position(-1, 1)));
   }
 
   @Test
   void isValidFieldShouldReturnFalseIfYIsLessThanZero() {
     final RoomImpl room = new RoomImpl(3, 4);
 
-    assertFalse(room.isValidField(1, -1));
+    assertFalse(room.isValidField(new Position(1, -1)));
   }
 
   @Test
   void isValidFieldShouldReturnFalseIfXIsMoreThanWidth() {
     final RoomImpl room = new RoomImpl(3, 4);
 
-    assertFalse(room.isValidField(4, 1));
+    assertFalse(room.isValidField(new Position(4, 1)));
   }
 
   @Test
   void isValidFieldShouldReturnFalseIfYIsMoreThanWidth() {
     final RoomImpl room = new RoomImpl(3, 4);
 
-    assertFalse(room.isValidField(5, -1));
+    assertFalse(room.isValidField(new Position(1, 5)));
   }
 }

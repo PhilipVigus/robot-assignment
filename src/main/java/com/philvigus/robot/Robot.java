@@ -17,18 +17,6 @@ public class Robot {
     this.room = room;
   }
 
-  public Direction getDirection() {
-    return direction;
-  }
-
-  public int getX() {
-    return x;
-  }
-
-  public int getY() {
-    return y;
-  }
-
   public void turnLeft() {
     direction = direction.turnLeft();
   }

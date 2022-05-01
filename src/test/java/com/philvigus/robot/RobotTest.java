@@ -15,7 +15,7 @@ class RobotTest {
 
     robot.turnLeft();
 
-    assertEquals(Direction.W, robot.getDirection());
+    assertEquals("Report: 1 1 W", robot.getReport());
   }
 
   @Test
@@ -24,7 +24,7 @@ class RobotTest {
 
     robot.turnRight();
 
-    assertEquals(Direction.E, robot.getDirection());
+    assertEquals("Report: 1 1 E", robot.getReport());
   }
 
   @Test
@@ -33,7 +33,7 @@ class RobotTest {
 
     robot.moveForward();
 
-    assertEquals(2, robot.getY());
+    assertEquals("Report: 1 2 N", robot.getReport());
   }
 
   @Test
@@ -42,7 +42,7 @@ class RobotTest {
 
     robot.moveForward();
 
-    assertEquals(2, robot.getX());
+    assertEquals("Report: 2 1 E", robot.getReport());
   }
 
   @Test
@@ -51,7 +51,7 @@ class RobotTest {
 
     robot.moveForward();
 
-    assertEquals(0, robot.getY());
+    assertEquals("Report: 1 0 S", robot.getReport());
   }
 
   @Test
@@ -60,7 +60,7 @@ class RobotTest {
 
     robot.moveForward();
 
-    assertEquals(0, robot.getX());
+    assertEquals("Report: 0 1 W", robot.getReport());
   }
 
   @Test

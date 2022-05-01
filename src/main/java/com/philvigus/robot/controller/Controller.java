@@ -8,9 +8,8 @@ import com.philvigus.robot.ui.PositionAndDirectionReader;
 import com.philvigus.robot.ui.RoomSizeReader;
 import com.philvigus.robot.ui.Ui;
 import com.philvigus.robot.world.Direction;
+import com.philvigus.robot.world.Position;
 import com.philvigus.robot.world.Room;
-
-import java.util.Map;
 
 /**
  * The Controller class.
@@ -18,7 +17,7 @@ import java.util.Map;
 public class Controller {
   private final Parser parser;
   private final Ui ui;
-  private Robot robot;
+  private final Robot robot;
 
   /**
    * Instantiates a new Controller.
@@ -26,13 +25,11 @@ public class Controller {
    * @param ui the ui
    * @param parser the parser
    *
-   *  TODO:
-   *  Pass an instance of Robot in here, which would be an interface rather
-   *  than a concrete class
    */
-public Controller(final Ui ui, final Parser parser) {
+public Controller(final Ui ui, final Parser parser, Robot robot) {
     this.ui = ui;
     this.parser = parser;
+    this.robot = robot;
   }
 
   /**
@@ -44,33 +41,23 @@ public void start() {
     displayStatusReport();
   }
 
-  /**
-   * TODO:
-   * Not happy with this function at all. You can tell I rushed it at the
-   * end to get the project working within the given time.
-   *
-   * As a minimum I would extract private functions to get the different parsed variables
-   * and use them to initialise the robot
-   */
   private void initialiseRobot() {
-    final RoomSizeReader roomSizeReader = new RoomSizeReader(ui);
-    final String roomSize = roomSizeReader.readInput();
-    final Room room = parser.parseRoom(roomSize);
+    final Room room = initialiseRoom();
 
-    final PositionAndDirectionReader positionAndDirectionReader =
-        new PositionAndDirectionReader(ui, room);
-    final String positionAndDirection = positionAndDirectionReader.readInput();
+    final String positionAndDirection =
+        new PositionAndDirectionReader(ui, room).readInput();
 
-    final Map<String, Integer> position = parser.parsePosition(positionAndDirection, room);
+    final Position position = parser.parsePosition(positionAndDirection, room);
     final Direction direction = parser.parseDirection(positionAndDirection);
 
-    /**
-     * TODO:
-     * It doesn't make sense to create the robot here. What I would do instead
-     * is to add a no-args constructor to the Robot class, pass an instance of Robot
-     * into the constructor of this class and just set the values of that here.
-     */
-    this.robot = new Robot(direction, position.get("x"), position.get("y"), room);
+    robot.initialise(position, direction, room);
+  }
+
+  private Room initialiseRoom() {
+    final RoomSizeReader roomSizeReader = new RoomSizeReader(ui);
+    final String roomSize = roomSizeReader.readInput();
+
+    return parser.parseRoom(roomSize);
   }
 
   /**

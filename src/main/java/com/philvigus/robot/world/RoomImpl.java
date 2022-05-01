@@ -16,8 +16,11 @@ public class RoomImpl implements Room {
     this.length = length;
   }
 
-  public boolean isValidField(final int x, final int y) {
-    return x >= 0 && x <= width && y >= 0 && y <= length;
+  public boolean isValidField(final Position position) {
+    return position.getX() >= 0
+        && position.getX() <= width - 1
+        && position.getY() >= 0
+        && position.getY() <= length - 1;
   }
 
   public int getLength() {

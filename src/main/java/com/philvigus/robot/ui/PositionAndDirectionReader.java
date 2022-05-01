@@ -1,15 +1,15 @@
 package com.philvigus.robot.ui;
 
+import com.philvigus.robot.world.Position;
 import com.philvigus.robot.world.Room;
 
 import java.util.regex.Matcher;
 
-/** The Position and direction reader
+/**
+ * The Position and direction reader
  *
- * TODO:
- * - Add tests
- * - Move display strings to a resource bundle
- * - Think of a better class name to remove the 'and'
+ * <p>TODO: - Add tests - Move display strings to a resource bundle - Think of a better class name
+ * to remove the 'and'
  */
 public class PositionAndDirectionReader extends ValidatedStringReader {
   private final Room room;
@@ -30,10 +30,7 @@ public class PositionAndDirectionReader extends ValidatedStringReader {
     this.room = room;
   }
 
-  /**
-   * TODO:
-   * This is another function that would benefit from adding a Position class
-   */
+  /** TODO: This is another function that would benefit from adding a Position class */
   @Override
   public String readInput() {
     final String input = ui.getInput(prompt);
@@ -50,7 +47,7 @@ public class PositionAndDirectionReader extends ValidatedStringReader {
     final int y = Integer.parseInt(data[1]);
 
     // Is the start position valid for the room size?
-    if (!room.isValidField(x, y)) {
+    if (!room.isValidField(new Position(x, y))) {
       ui.displayMessage("The position must be within the room");
       return readInput();
     }

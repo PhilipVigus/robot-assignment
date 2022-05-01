@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RobotTest {
   @Test
-  void turnLeftTurnsTheRobotLeft() {
+  void turnLeftShouldTurnTheRobotLeft() {
     Robot robot = new Robot(Direction.N);
 
     robot.turnLeft();
@@ -15,7 +15,7 @@ class RobotTest {
   }
 
   @Test
-  void turnRightTurnsTheRobotRight() {
+  void turnRightShouldTurnTheRobotRight() {
     Robot robot = new Robot(Direction.N);
 
     robot.turnRight();

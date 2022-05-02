@@ -15,8 +15,11 @@ import com.philvigus.robot.world.Room;
  * The Controller class.
  */
 public class Controller {
+  // TODO: should be an interface
   private final Parser parser;
   private final Ui ui;
+
+  // TODO: should be an interface
   private final Robot robot;
 
   /**
@@ -26,7 +29,8 @@ public class Controller {
    * @param parser the parser
    *
    */
-public Controller(final Ui ui, final Parser parser, Robot robot) {
+  // TODO: all arguments should be interfaces
+  public Controller(final Ui ui, final Parser parser, Robot robot) {
     this.ui = ui;
     this.parser = parser;
     this.robot = robot;
@@ -54,8 +58,7 @@ public void start() {
   }
 
   private Room initialiseRoom() {
-    final RoomSizeReader roomSizeReader = new RoomSizeReader(ui);
-    final String roomSize = roomSizeReader.readInput();
+    final String roomSize =  new RoomSizeReader(ui).readInput();
 
     return parser.parseRoom(roomSize);
   }
@@ -64,14 +67,13 @@ public void start() {
    * TODO:
    * This function is at the wrong level of abstraction compared to others in this
    * class. It is missing a MovesParser class, which would pass the String into a
-   * sequence of moves and return those as a list. All this class would need to
-   * do then would be to execute the moves.
+   * sequence of moves and return those as a list of Command instances. The Command instances
+   * would have execute methods which would call the respective methods on the robot.
    *
    * I'd also like to make it so the program doesn't automatically finish after
    * one set of movements. I'd have to have an elegant way of allowing the
    * user to exit with a command though, which would significantly change
    * the way the parsers are written.
-   *
    */
   private void moveRobot() {
     final MovesReader movesReader = new MovesReader(ui);

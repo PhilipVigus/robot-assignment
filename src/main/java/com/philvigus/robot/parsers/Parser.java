@@ -24,9 +24,6 @@ public class Parser {
    *
    * @param positionAndDirection the position and direction string
    * @return the position map
-   *     <p>TODO: Introducing a Position class would make the most difference here, massively
-   *     simplify this. Using a Map here makes it much harder to following what is actually a
-   *     relative simple function
    */
   public Position parsePosition(final String positionAndDirection, final Room room) {
     final String[] fields = positionAndDirection.split(" ");

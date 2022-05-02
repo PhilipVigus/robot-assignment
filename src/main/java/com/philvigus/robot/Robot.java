@@ -8,13 +8,8 @@ import com.philvigus.robot.world.RoomImpl;
 
 /**
  * The Robot class.
- *
- * TODO:
- * - Add a no-args constructor the controller can use
- * - Extract a Robot interface and make this class implement it
- * - Simplify initialisation by providing an Initialise function that sets all of the robot attributes at once
- * - Use the Position class I would add to record the robot's position
  */
+// TODO: Should implement an interface
 public class Robot {
   private Room room;
   private Direction direction;
@@ -23,7 +18,7 @@ public class Robot {
   /**
    * Instantiates a new Robot.
    *
-   * @param direction the initial
+   * @param direction the robot's initial direction
    * @param room the room the robot is in
    * @param position the robot's initial position
    */
@@ -33,7 +28,11 @@ public class Robot {
     this.position = position;
   }
 
-  public Robot() {
+  /**
+   * Instantiates a new Robot with default parameters.
+   */
+  // TODO: extract variables here and name them to make it clear they are defaults
+public Robot() {
     this.direction = Direction.N;
     this.position = new Position(0,0);
     this.room = new RoomImpl(1, 1);
@@ -76,7 +75,14 @@ public class Robot {
     return String.format("Report: %s %s", Position.convertToUserCoordinates(position, room).toString(), direction);
   }
 
-  public void initialise(final Position position, final Direction direction, final Room room) {
+  /**
+   * Initialise the robot's state.
+   *
+   * @param position the position
+   * @param direction the direction
+   * @param room the room
+   */
+public void initialise(final Position position, final Direction direction, final Room room) {
     this.position = position;
     this.direction = direction;
     this.room = room;
@@ -84,6 +90,7 @@ public class Robot {
 
   private void moveNorth() throws InvalidFieldException {
     Position newPosition = new Position(position.getX(), position.getY() + 1);
+
     if (!room.isValidField(newPosition)) {
       throw new InvalidFieldException("Unable to move North");
     }
@@ -119,28 +126,5 @@ public class Robot {
     }
 
     position = newPosition;
-  }
-
-  /**
-   * TODO:
-   * All of these setters should be replaced with a single initialise method
-   */
-
-  /**
-   * Sets room.
-   *
-   * @param room the room
-   */
-  public void setRoom(final Room room) {
-    this.room = room;
-  }
-
-  /**
-   * Sets direction.
-   *
-   * @param direction the direction
-   */
-  public void setDirection(final Direction direction) {
-    this.direction = direction;
   }
 }

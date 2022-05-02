@@ -8,8 +8,10 @@ import java.util.regex.Matcher;
 /**
  * The Position and direction reader
  *
- * <p>TODO: - Add tests - Move display strings to a resource bundle - Think of a better class name
- * to remove the 'and'
+ * TODO:
+ * - Add tests
+ * - Move display strings to a resource bundle
+ * - Think of a better class name
  */
 public class PositionAndDirectionReader extends ValidatedStringReader {
   private final Room room;
@@ -30,7 +32,6 @@ public class PositionAndDirectionReader extends ValidatedStringReader {
     this.room = room;
   }
 
-  /** TODO: This is another function that would benefit from adding a Position class */
   @Override
   public String readInput() {
     final String input = ui.getInput(prompt);

@@ -1,21 +1,30 @@
 # Robot Assignment
 
-## Time spent
-
-I noticed while running manual tests very late on that there was an issue with the coordinate system I had used. The
-fix for this was not straightforward, and unfortunately led to me having to spend extra time on the project. In the
-end I spent around 6-7 hours in total.
-
-## Other issues/areas for improvement
+## Issues/areas for improvement
 
 In addition to the comments I've written against the code itself, this is a summary of the main points:
 
+* The main unfinished area is around parsing the command string from the user. At the moment the Controller class does
+  everything itself, which means the MoveRobot function is doing too much and is at the wrong level of abstraction. I
+  would address this in the following way (which is basically an implementation of the Command pattern)
+    * Introduce a parseCommands method on the Parser class. This would parse the command string into a list of Command
+      instances
+    * There would be three Command classes (Forward, Left and Right), each implementing a Command interface with a
+      single execute method.
+    * The robot instance would be passed into each command's constructor, and the execute method would call the
+      respective method on the robot to complete the command.
+* Parser, Robot and Direction should all be implementing interfaces to make it easier to swap in and out
+  alternate implementations in consumer classes
 * Change use of 'Moves' to 'Commands' to match language used in task spec. This would involve renaming classes and
   instance variables as appropriate
-* Rework the moveRobot function in the Controller class (see comments in the class itself for details)
-* Introduce interfaces for the Parser and Robot to implement. At the moment, consumers of these classes are using
-  concrete instances, which is not great. By using interfaces instead it would be possible to easily swap out different
-  implementations
-* Encapsulate input and output streams so that they can be more easily mocked. This should allow me to solve the issue
-  with testing the different Reader classes. When I tried to mock the ConsoleUi class, it errored. I spent some time
-  trying to work out why but eventually moved on.
+* Either work out why Mockito won't mock ConsoleUi, or write a mock of the UI interface (the latter is probably easier,
+  but in the long run it's probably better to understand why mocking ConsoleUI is failing). This would allow me to
+  add missing tests for the Reader classes.
+* Create Input and Output interfaces and create implementations of these for System input and output and pass these into
+  UI constructors. This would make it much easier to swap out different types of input and output, eg voice, joystick
+  etc
+* All display strings need to be moved to a resource bundle
+* Handle potential integer overflows with user inputted numbers
+* I initially started the project targeting 17. However, this caused a clash with Maven when I tried to build the
+  project artifact from the command line with Maven. Downgrading to 14 fixed this so that I could progress with the
+  project, but I need to work out what the problem is, as 17 should not have caused a problem

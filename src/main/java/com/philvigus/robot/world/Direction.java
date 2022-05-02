@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /** The Direction enum. */
+// TODO: should implement an interface
 public enum Direction {
   /** N direction. */
   N(0),

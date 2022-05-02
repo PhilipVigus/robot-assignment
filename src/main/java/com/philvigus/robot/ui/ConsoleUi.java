@@ -14,12 +14,8 @@ public class ConsoleUi implements Ui {
    *
    * @param inputStream the input stream
    * @param outputStream the output stream
-   *
-   * TODO:
-   * Introduce classes to encapsulate input and output streams here. This
-   * would help fix the issue I am having testing some of the user input based
-   * classes, as the new classes would be easier to mock in the tests
    */
+  // TODO: Introduce classes to encapsulate input and output streams here.
   public ConsoleUi(final InputStream inputStream, final PrintStream outputStream) {
     this.scanner = new Scanner(inputStream);
     this.outputStream = outputStream;

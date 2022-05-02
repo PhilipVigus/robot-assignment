@@ -26,4 +26,9 @@ public class RoomImpl implements Room {
   public int getLength() {
     return length;
   }
+
+  @Override
+  public int getWidth() {
+    return width;
+  }
 }

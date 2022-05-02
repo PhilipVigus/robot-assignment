@@ -16,4 +16,11 @@ public interface Room {
    * @return the length
    */
   int getLength();
+
+  /**
+   * Gets the room's width.
+   *
+   * @return the width
+   */
+  int getWidth();
 }
